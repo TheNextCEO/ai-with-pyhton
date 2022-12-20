@@ -1,0 +1,328 @@
+{
+  "enumDefs": [],
+  "structDefs": [],
+  "classificationDefs": [],
+  "entityDefs": [
+    {
+      "name": "trino_catalog",
+      "superTypes": ["DataSet"],
+      "serviceType": "trino",
+      "typeVersion": "1.0",
+      "options": {
+        "schemaElementsAttribute": "schemas"
+      },
+      "attributeDefs": [
+        {
+          "name": "name",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": false,
+          "isUnique": false
+        },
+        {
+          "name": "owner",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "comment",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "properties",
+          "typeName": "map<string,string>",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        }
+      ]
+    },
+    {
+      "name": "trino_schema",
+      "superTypes": ["DataSet"],
+      "serviceType": "trino",
+      "typeVersion": "1.0",
+      "options": {
+        "schemaElementsAttribute": "tables"
+      },
+      "attributeDefs": [
+        {
+          "name": "name",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": false,
+          "isUnique": false
+        },
+        {
+          "name": "owner",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "comment",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "properties",
+          "typeName": "map<string,string>",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        }
+      ]
+    },
+    {
+      "name": "trino_schema_ddl",
+      "superTypes": ["ddl"],
+      "serviceType": "trino",
+      "typeVersion": "1.0",
+      "attributeDefs": [],
+      "options": {
+        "ddlType": "CREATE_SCHEMA",
+        "ddlTarget": "trino_schema"
+      }
+    },
+    {
+      "name": "trino_table_ddl",
+      "superTypes": ["ddl"],
+      "serviceType": "trino",
+      "typeVersion": "1.0",
+      "attributeDefs": [],
+      "options": {
+        "ddlType": "CREATE_TABLE",
+        "ddlTarget": "trino_table"
+      }
+    },
+    {
+      "name": "trino_table",
+      "superTypes": ["DataSet"],
+      "serviceType": "trino",
+      "typeVersion": "1.0",
+      "options": {
+        "schemaElementsAttribute": "columns"
+      },
+      "attributeDefs": [
+        {
+          "name": "createTime",
+          "typeName": "date",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "lastAccessTime",
+          "typeName": "date",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "comment",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "retention",
+          "typeName": "int",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "aliases",
+          "typeName": "array<string>",
+          "cardinality": "SET",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "parameters",
+          "typeName": "map<string,string>",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "viewOriginalText",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "viewExpandedText",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "tableType",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "temporary",
+          "typeName": "boolean",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": true,
+          "isUnique": false
+        }
+      ]
+    },
+    {
+      "name": "trino_column",
+      "superTypes": ["DataSet"],
+      "serviceType": "trino",
+      "typeVersion": "1.0",
+      "options": {
+        "schemaElementsAttribute": "[\"name\", \"description\", \"owner\", \"type\", \"comment\", \"position\"]"
+      },
+      "attributeDefs": [
+        {
+          "name": "type",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": true,
+          "isOptional": false,
+          "isUnique": false
+        },
+        {
+          "name": "comment",
+          "typeName": "string",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        },
+        {
+          "name": "position",
+          "typeName": "int",
+          "cardinality": "SINGLE",
+          "isIndexable": false,
+          "isOptional": true,
+          "isUnique": false
+        }
+      ]
+    },
+    {
+      "name": "trino_column_lineage",
+      "superTypes": ["Process"],
+      "serviceType": "trino",
+      "typeVersion": "1.0",
+      "attributeDefs": [
+        {
+          "name": "inputs",
+          "typeName": "array<trino_column>",
+          "cardinality": "SET",
+          "isIndexable": false,
+          "isOptional": false,
+          "isUnique": false
+        },
+        {
+          "name": "outputs",
+          "typeName": "array<trino_column>",
+          "cardinality": "SET",
+          "isIndexable": false,
+          "isOptional": false,
+          "isUnique": false
+        }
+      ]
+    }
+  ],
+  "relationshipDefs": [
+    {
+      "name": "trino_catalog_schemas",
+      "serviceType": "trino",
+      "typeVersion": "1.0",
+      "relationshipCategory": "AGGREGATION",
+      "relationshipLabel": "__trino_catalog.schemas",
+      "endDef1": {
+        "type": "trino_catalog",
+        "name": "schemas",
+        "isContainer": true,
+        "cardinality": "SET"
+      },
+      "endDef2": {
+        "type": "trino_schema",
+        "name": "catalog",
+        "isContainer": false,
+        "cardinality": "SINGLE"
+      },
+      "propagateTags": "NONE"
+    },
+    {
+      "name": "trino_schema_tables",
+      "serviceType": "trino",
+      "typeVersion": "1.0",
+      "relationshipCategory": "AGGREGATION",
+      "relationshipLabel": "__trino_schema.tables",
+
+      "endDef1": {
+        "type": "trino_schema",
+        "name": "tables",
+        "isContainer": true,
+        "cardinality": "SET"
+      },
+      "endDef2": {
+        "type": "trino_table",
+        "name": "schema",
+        "isContainer": false,
+        "cardinality": "SINGLE"
+      },
+      "propagateTags": "NONE"
+    },
+    {
+      "name": "trino_table_columns",
+      "serviceType": "trino",
+      "typeVersion": "1.0",
+      "relationshipCategory": "COMPOSITION",
+      "relationshipLabel": "__trino_table.columns",
+      "endDef1": {
+        "type": "trino_table",
+        "name": "columns",
+        "isContainer": true,
+        "cardinality": "SET"
+      },
+      "endDef2": {
+        "type": "trino_column",
+        "name": "table",
+        "isContainer": false,
+        "cardinality": "SINGLE"
+      },
+      "propagateTags": "NONE"
+    }
+  ]
+}
